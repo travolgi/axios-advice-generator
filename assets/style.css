@@ -1,0 +1,176 @@
+:root {
+   --blue: hsl(217, 19%, 38%);
+   --gray: hsl(217, 19%, 24%);
+   --dark-blue: hsl(218, 23%, 16%);
+   --cyan: hsl(193, 38%, 86%);
+   --green: hsl(150, 100%, 66%);
+   --shadow: .4rem .4rem 2.5rem rgba(0,0,0,.25);
+   --ease: .5s ease-in-out;
+}
+* {
+   margin: 0;
+   padding: 0;
+   border: 0;
+   outline: none;
+   box-sizing: border-box;
+}
+
+.sr-only {
+   position: absolute;
+   width: 1px;
+   height: 1px;
+   padding: 0;
+   margin: -1px;
+   overflow: hidden;
+   clip: rect(0, 0, 0, 0);
+   white-space: nowrap;
+   border: 0;
+}
+
+body {
+   display: grid;
+   place-items: center;
+   min-height: 100vh;
+   padding-inline: 1rem;
+   font-family: 'Manrope', sans-serif;
+   font-size: 1.2em;
+   font-weight: 800;
+   background: var(--dark-blue);
+   color: var(--cyan);
+   transition: var(--ease);
+}
+
+#adviceId:before { content: '#'; }
+#advice:before{ content: '“'; }
+#advice:after { content: '”'; }
+
+h3 {
+   font-size: .75em;
+   font-weight: 400;
+   letter-spacing: .2rem;
+   text-transform: uppercase;
+}
+
+h3,
+a {
+   color: var(--green);
+}
+
+article {
+   display: flex;
+   flex-direction: column;
+   gap: 2rem;
+   align-items: center;
+   max-width: 34rem;
+   border-radius: 1rem;
+   padding: 2.5rem;
+   text-align: center;
+   background-color: var(--gray);
+   transition: var(--ease);
+   box-shadow: var(--shadow);
+}
+
+button {
+   display: grid;
+   place-items: center;
+   width: 3.8rem;
+   aspect-ratio: 1;
+   border-radius: 50%;
+   margin-bottom: -4.5rem;
+   background-color: var(--green);
+   transition: var(--ease);
+}
+button:hover {
+   box-shadow: 0 0 2.5rem var(--green);
+}
+button:hover svg {
+   transition: var(--ease);
+   animation: rotate 2s linear infinite;
+}
+button:active {
+   transform: scale(65%);
+}
+
+.zoom {
+   animation: zoom 1s linear;
+}
+
+@media screen and (max-width: 55em) {
+   body {
+      font-size: 1em;
+   }
+   article {
+      padding-inline: 1rem;
+   }
+}
+
+
+/*  Animation keyframes  */
+@keyframes rotate { 
+   100% {
+      transform:rotate(360deg);
+      filter: drop-shadow(.5rem .5rem .8rem --blue) invert(75%);
+   }
+}
+@keyframes zoom { 
+   0% {
+      transform: scale(100%);
+   }
+   25% {
+      transform: scale(110%);
+   }
+   100% {
+      transform: scale(100%);
+   }
+}
+
+/*  Attribution  */
+.attribution {
+   display: block;
+   position: fixed;
+   right: 1rem;
+   bottom: 1rem;
+   background-image: url('https://avatars.githubusercontent.com/u/105203357?v=4');
+   background-size: 100%;
+   height: 4rem;
+   width: 4rem;
+   border-radius:100%;
+   z-index: 99;
+}
+.attribution p {
+   visibility: hidden;
+   position: fixed;
+   bottom: 4.5rem;
+   right: 5rem;
+   width: 16rem;
+   padding: .3rem 1rem;
+   border-radius: 1rem 1rem 0;
+   background-color: var(--dark-blue);
+   font-size: .9rem;
+   z-index: 999;
+   box-shadow: 0 0 .4rem var(--cyan);
+   transform: rotateY(90deg);
+   transform-origin: right;
+   transition: .8s cubic-bezier(.06, .8, .1, 1);
+}
+.attribution:hover p {
+   visibility: visible;
+   transform: rotateY(0);
+}
+
+@media screen and (max-width: 800px) {
+   .attribution {
+      position: relative;
+      right: unset;
+      height: 3.5rem;
+      width: 3.5rem;
+      box-shadow: 0 0 .4rem var(--cyan);
+   }
+   .attribution p {
+      position: relative;
+      right: 6rem;
+      visibility: visible;
+      border-radius: 1rem;
+      transform: rotateY(0);
+   }
+}
