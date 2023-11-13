@@ -1,4 +1,4 @@
-const url = 'https://api.adviceslip.com/advice';
+const url = 'https://api.adviceslip.com/advice?t=' + Math.random();
 
 window.onload = () => {
    const card = document.body.querySelector('article');
